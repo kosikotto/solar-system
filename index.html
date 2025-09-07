@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Solar System</title>
+    <link rel="icon" href="bolygok/solarSystemIcon.png">
+</head>
+<body>
+    
+    <div class="wrapper">
+
+        <div class="loadingScreen">
+            <div class="loading">
+                <div class="hulloCsillag">
+                    <img class="hulloCsillag" src="bolygok/hullocsillag.gif" alt="">
+                </div>
+
+                <div class="loadingBoarder">
+
+                </div>
+            </div>
+
+            <h2>BETÖLTÉS</h2>
+        </div>
+
+        <div class="loaded">
+
+            <div class="tutorial">
+                <h2>
+                    Üdvözlünk a Naprendszerünk bemutatására készült oldalon!
+                </h2>
+            
+                <div class="tutorialCardHolder">
+                    <div class="tutorialCard">
+                        Ha az egeret egy bolygó fölé viszed, rövid ismertetőket olvashatsz róluk. 
+                        <br><br>
+                        <div class="demoPlanet">
+                            <img class="demoPlanetPicture" src="bolygok/fold.png" alt="A Föld bolygó képe">
+                            <img class="demoPointerPicture" src="bolygok/pointerMirror.png" alt="Egeret jelző ikon">
+                        </div>
+                        <br>
+                        További részleteket a leírások után található linkekre kattintva érhetsz el:
+                        <br><br>
+                        <div class="linkExample">
+                            <img class="linkExamplePicture" src="bolygok/linkExample.PNG" alt="Link példa">
+                        </div>
+                    </div>
+            
+                    <div class="tutorialCard">
+                        A bolygók forgási sebességét a jobb felső sarokban lévő "lassít" és "gyorsít" gombokkal szabályozhatod:
+                        <br><br>
+                        <div class="speedExample">
+                            <img class="speedExamplePicture" src="bolygok/speedExample.PNG" alt="Sebesség állítási példa">
+                        </div>
+                        <br>
+                        Ha további segítségre van szükséged, kattints a jobb felső sarokban lévő kérdőjel ikonra.
+                        <br><br>
+                        <div class="kerdojelDiv">
+                            <img class="kerdojelKep" src="bolygok/questionmark.png" alt="Kérdőjel ikon">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mobilTutorial">
+                    Mobilon eszközökön a lassító / gyorsító / segédlet gombok a lenyíló fülre kattintva elérhetővé válnak.
+                    <br>
+                    <br>
+                    <div class="tutorialContainer">
+                        Csukott állapotban: 
+                        <div class="dropDownMenuClosedDiv">
+                            <img class="dropDownMenuClosedPng" src="bolygok/dropDownClosed.PNG" alt="">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="tutorialContainer">
+                        Nyitott állapotban: 
+                        <div class="dropDownMenuOpenDiv">
+                            <img class="dropDownMenuOpenPng" src="bolygok/dropdownOpen.PNG" alt="">
+                        </div>
+                    </div>
+                </div>
+            
+                <button class="tutorialFinishButton">Tovább</button>
+            </div>            
+
+            <div class="bolygok">
+                <div class="nap">
+                    
+                </div>
+                
+                <div class="napShadow">
+    
+                </div>
+    
+                <div class="korpalya korpalyaMerkur">
+    
+                </div>
+    
+                <div class="korpalya korpalyaVenus">
+    
+                </div>
+    
+                <div class="korpalya korpalyaFold">
+    
+                </div>
+    
+                <div class="korpalya korpalyaMars">
+    
+                </div>
+    
+                <div class="korpalya korpalyaJupiter">
+    
+                </div>
+    
+                <div class="korpalya korpalyaSzaturnusz">
+    
+                </div>
+    
+                <div class="korpalya korpalyaUranusz">
+    
+                </div>
+    
+                <div class="korpalya korpalyaNeptunusz">
+    
+                </div>
+    
+                <div class="korpalya korpalyaPluto">
+    
+                </div>
+    
+                <div class="container">
+                    <div class="merkur bolygo">
+                        <div class="merkurPlanet planet">
+    
+                        </div>
+                    </div>
+            
+                    <div class="venus bolygo">
+                        <div class="venusPlanet planet">
+    
+                        </div>
+                    </div>
+            
+                    <div class="fold bolygo">
+                        <div class="foldPlanet planet">
+    
+                        </div>
+                    </div>
+            
+                    <div class="mars bolygo">
+                        <div class="marsPlanet planet">
+    
+                        </div>
+                    </div>
+            
+                    <div class="jupiter bolygo">
+                        <div class="jupiterPlanet planet">
+    
+                        </div>
+                    </div>
+            
+                    <div class="szaturnusz bolygo">
+                        <div class="szaturnuszPlanet planet">
+    
+                        </div>
+                    </div>
+            
+                    <div class="uranus bolygo">
+                        <div class="uranusPlanet planet">
+    
+                        </div>
+                    </div>
+            
+                    <div class="neptunusz bolygo">
+                        <div class="neptunuszPlanet planet">
+    
+                        </div>
+                    </div>
+    
+                    <div class="pluto bolygo">
+                        <div class="plutoPlanet planet">
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="infoAboutPlanet">
+                <div class="napInfo infoBox">
+                    <button class="closeX closeXNap">
+                        <div class="line1">
+                            
+                        </div>
+    
+                        <div class="line2">
+    
+                        </div>
+                    </button>
+    
+                    <h1>Nap</h1>
+                    <p>A Nap a naprendszer központi csillaga, hatalmas hő- és fényforrás. Tömege a naprendszer teljes tömegének 99,86%-át teszi ki. Hőjét és energiáját nukleáris fúzióból nyeri, amely az egész naprendszer életének alapja.</p>
+                    <br>
+                    <p>További információért <a href="https://hu.wikipedia.org/wiki/Nap" target="_blank">kattints ide</a></p>
+                    <img class="displayImage" src="bolygok/sun.png" alt="">
+                </div>
+    
+                <div class="merkurInfo infoBox">
+                    <button class="closeX closeXMerkur">
+                        <div class="line1">
+                            
+                        </div>
+    
+                        <div class="line2">
+    
+                        </div>
+                    </button>
+    
+                    <h1>Merkúr</h1>
+                    <p>A Merkúr a Naphoz legközelebbi és legkisebb bolygó. Nincs légköre, felszíne tele van kráterekkel. Nappali hőmérséklete extrém magas, éjszaka viszont rendkívül hideg, ami miatt az egyik legszélsőségesebb bolygó.</p>
+                    <br>
+                    <p>További infókért <a href="https://hu.wikipedia.org/wiki/Merk%C3%BAr" target="_blank">kattints ide</a></p>
+                    <img class="displayImage" src="bolygok/merkur.png" alt="">
+                </div>
+    
+                <div class="venuszInfo infoBox">
+                    <button class="closeX closeXVenusz">
+                        <div class="line1">
+    
+                        </div>
+    
+                        <div class="line2">
+    
+                        </div>
+                    </button>
+    
+                    <h1>Vénusz</h1>
+                    <p>A Vénusz a Naprendszer legforróbb bolygója, sűrű szén-dioxid légkörével. Légkörében savas esők hullanak. A felszíni hőmérséklet extrém magas, és forgása retrográd, azaz az óramutató járásával ellentétes.</p>
+                    <br>
+                    <p>További infókért <a href="https://hu.wikipedia.org/wiki/V%C3%A9nusz" target="_blank">kattints ide</a></p>
+                    <img class="displayImage" src="bolygok/Venus2.png" alt="">
+                </div>
+    
+                <div class="foldInfo infoBox">
+                    <button class="closeX closeXFold">
+                        <div class="line1">
+    
+                        </div>
+    
+                        <div class="line2">
+    
+                        </div>
+                    </button>
+    
+                    <h1>Föld</h1>
+                    <p>A Föld az egyetlen ismert bolygó, ahol élet létezik. Változatos felszíne van, óceánokkal és kontinensekkel. Légköre nitrogénből és oxigénből áll, ami ideális az élőlények számára. Holdja stabilizálja tengelyének dőlését.</p>
+                    <br>
+                    <p>További infókért <a href="https://hu.wikipedia.org/wiki/F%C3%B6ld" target="_blank">kattints ide</a></p>
+                    <img class="displayImage" src="bolygok/fold.png" alt="">
+                </div>
+    
+                <div class="marsInfo infoBox">
+                    <button class="closeX closeXMars">
+                        <div class="line1">
+    
+                        </div>
+    
+                        <div class="line2">
+    
+                        </div>
+                    </button>
+    
+                    <h1>Mars</h1>
+                    <p>A Mars vörös színét a felszínén található vas-oxidnak, azaz rozsdának köszönheti. Hűvös és száraz, de múltbéli vízfolyások nyomai láthatók. Két apró holdja van, és az emberiség egyik fő célpontja a jövőbeli űrkutatásban.</p>
+                    <br>
+                    <p>További infókért <a href="https://hu.wikipedia.org/wiki/Mars_(bolyg%C3%B3)" target="_blank">kattints ide</a></p>
+                    <img class="displayImage" src="bolygok/mars.png" alt="">
+                </div>
+    
+                <div class="jupiterInfo infoBox">
+                    <button class="closeX closeXJupiter">
+                        <div class="line1">
+    
+                        </div>
+    
+                        <div class="line2">
+    
+                        </div>
+                    </button>
+    
+                    <h1>Jupiter</h1>
+                    <p>A Jupiter a Naprendszer legnagyobb bolygója, főleg hidrogénből és héliumból áll. Hatalmas viharai közül a legismertebb a Nagy Vörös Folt. Több mint 75 holdja van, köztük a nagyobbak a Galilei-holdak.</p>
+                    <br>
+                    <p>További infókért <a href="https://hu.wikipedia.org/wiki/Jupiter" target="_blank">kattints ide</a></p>
+                    <img class="displayImage" src="bolygok/jupiter.png" alt="">
+                </div>
+    
+                <div class="szaturnuszInfo infoBox">
+                    <button class="closeX closeXSzaturnusz">
+                        <div class="line1">
+    
+                        </div>
+    
+                        <div class="line2">
+    
+                        </div>
+                    </button>
+    
+                    <h1>Szaturnusz</h1>
+                    <p>A Szaturnusz jellegzetes gyűrűiről híres, amelyek jégből, sziklából és porból állnak. A bolygó főként hidrogénből és héliumból épül fel. Több mint 80 ismert holdja van, köztük a legnagyobb a Titán.</p>
+                    <br>
+                    <p>További infókért <a href="https://hu.wikipedia.org/wiki/Szaturnusz" target="_blank">kattints ide</a></p>
+                    <img class="displayImage" src="bolygok/saturnus.png" alt="">
+                </div>
+    
+                <div class="uranuszInfo infoBox">
+                    <button class="closeX closeXUranusz">
+                        <div class="line1">
+    
+                        </div>
+    
+                        <div class="line2">
+    
+                        </div>
+                    </button>
+    
+                    <h1>Uránusz</h1>
+                    <p>Az Uránusz különlegessége, hogy oldalára dőlve kering a Nap körül. Főként jégből és gázból áll, kékeszöld színét a légkörében lévő metán adja. 27 holdja van, és gyűrűrendszere is létezik, bár halványabb, mint a Szaturnuszé.</p>
+                    <br>
+                    <p>További infókért <a href="https://hu.wikipedia.org/wiki/Ur%C3%A1nusz" target="_blank">kattints ide</a></p>
+                    <img class="displayImage" src="bolygok/uranus.png" alt="">
+                </div>
+    
+                <div class="neptunuszInfo infoBox">
+                    <button class="closeX closeXNeptunusz">
+                        <div class="line1">
+    
+                        </div>
+    
+                        <div class="line2">
+    
+                        </div>
+                    </button>
+    
+                    <h1>Neptunusz</h1>
+                    <p>A Neptunusz a Naprendszer legtávolabbi bolygója. Sötétkék színe a metán légkörének köszönhető. Erős szelei és viharai vannak, például a Nagy Sötét Folt. Több mint egy tucat holdja van, legnagyobb közülük a Triton.</p>
+                    <br>
+                    <p>További infókért <a href="https://hu.wikipedia.org/wiki/Neptunusz_(bolyg%C3%B3)" target="_blank">kattints ide</a></p>
+                    <img class="displayImage" src="bolygok/neptunusz.png" alt="">
+                </div>
+    
+                <div class="plutoInfo infoBox">
+                    <button class="closeX closeXPluto">
+                        <div class="line1">
+    
+                        </div>
+    
+                        <div class="line2">
+    
+                        </div>
+                    </button>
+    
+                    <h1>Pluto</h1>
+                    <p>A Plútó törpebolygó a Kuiper-övben, egykor a Naprendszer kilencedik bolygója volt. Jégből és kőzetből áll, felszínén nitrogénjég található. Keringése elnyúlt, öt holdja van, legnagyobb a Charon. Felszínén hegyek és gleccserek utalnak geológiai aktivitásra.</p>
+                    <br>
+                    <p>További infókért <a href="https://hu.wikipedia.org/wiki/Pluto_(t%C3%B6rpebolyg%C3%B3)" target="_blank">kattints ide</a></p>
+                    <img class="displayImage" src="bolygok/pluto.png" alt="">
+                </div>
+            </div>
+    
+            <div class="speedWrapper">
+                <div class="speedContainer">
+                    <button class="gombPlus">Lassít</button>
+                    <p class="speed">1</p>
+                    <button class="gombMinus">Gyorsít</button>
+                </div>
+
+                <div class="questionMark">
+                    
+                </div>
+
+                <div class="dropDown"></div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+
+</body>
+</html>

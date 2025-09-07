@@ -1,0 +1,1819 @@
+:root {
+    --viewportValue: 0.027vh;
+    --viewportValue2: 0.027vh;
+    --viewportValue3: 0.027vw;
+    --animationDelay: 1s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+}
+
+html, body {
+    height: 100%;
+    background-color: black;
+}
+
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    background-image: url("bolygok/space4.jpg");
+    background-position: center;
+    background-size: contain;
+}
+
+.loadingScreen {
+    position: absolute;
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.loadingScreenDone {
+    opacity: 0;
+}
+
+.loadingScreen h2 {
+    position: absolute;
+
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    color: white;
+
+    font-size: calc(var(--viewportValue) * 150);
+
+    animation-name: loadingTitle;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes loadingTitle {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+
+    33% {
+        transform: translate(-50%, -54%);
+    }
+
+    66% {
+        transform: translate(-50%, -46%);
+    }
+    
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.loading {
+    position: absolute;
+    background-image: url("bolygok/solarSystemIcon.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: calc(var(--viewportValue) * 800);
+    width: calc(var(--viewportValue) * 800);
+    border-radius: 50%;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hulloCsillag {
+    position: absolute;
+    width: calc(var(--viewportValue) * 600);
+    height: calc(var(--viewportValue) * 600);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loadingBoarder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-color: transparent;
+    border-width: calc(var(--viewportValue) * 50);
+    border-style: solid;
+    border-top-color: rgb(0, 183, 255);
+
+    animation-name: loadingSpinner;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes loadingSpinner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loaded {
+    opacity: 0;
+    height: 100%;
+    transition: opacity 500ms;
+}
+
+.loadedDone {
+    opacity: 1;
+}
+
+.tutorial {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.75);
+
+    backdrop-filter: blur(calc(var(--viewportValue) * 40));
+    -webkit-backdrop-filter: blur(calc(var(--viewportValue) * 40));
+
+    opacity: 0;
+
+    z-index: 30;
+    transition: opacity 500ms;
+}
+
+.tutorialVisible {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.tutorialClosedZindex {
+    z-index: -1 !important;
+}
+
+.tutorial h2 {
+    margin-bottom: calc(var(--viewportValue) * 80);
+    color: white;
+    text-shadow: calc(var(--viewportValue) * 25) calc(var(--viewportValue) * 25) calc(var(--viewportValue) * 50) rgb(0, 153, 255);
+    font-size: calc(var(--viewportValue) * 150);
+    text-align: center;
+}
+
+.tutorialCardHolder {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tutorialCard {
+    height: calc(var(--viewportValue) * 1700);
+    width: calc(var(--viewportValue) * 1300);
+    margin-right: calc(var(--viewportValue) * 80);
+    margin-left: calc(var(--viewportValue) * 80);
+    padding: calc(var(--viewportValue) * 50);
+    border-radius: calc(var(--viewportValue) * 75);
+    border-width: calc(var(--viewportValue) * 25);
+    border-style: solid;
+    border-color: white;
+    background-color: rgb(20, 20, 20);
+    color: white;
+    font-size: calc(var(--viewportValue) * 90);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tutorialContainer, .mobilTutorial {
+    display: none;
+}
+
+.demoPlanet {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+
+    border-width: calc(var(--viewportValue) * 20);
+    border-color: transparent;
+    border-style: solid;
+    border-radius: 50%;
+
+    animation-name: pointerHoverPlanet;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pointerHoverPlanet {
+    0%, 30% {
+        border-color: transparent;
+    }
+
+    60%, 100% {
+        border-color: white;
+    }
+}
+
+.demoPlanetPicture {
+    height: calc(var(--viewportValue) * 280);
+    width: calc(var(--viewportValue) * 280);
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(120, 190, 255));
+}
+
+.demoPointerPicture {
+    height: calc(var(--viewportValue) * 170);
+    width: calc(var(--viewportValue) * 170);
+    position: absolute;
+    left: -40%;
+    top: 70%;
+    animation-name: pointerHoverPointer;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    backdrop-filter: blur(calc(var(--viewportValue) * 40));
+    -webkit-backdrop-filter: blur(calc(var(--viewportValue) * 40));
+
+    border-radius: 35%;
+}
+
+@keyframes pointerHoverPointer {
+    0% {
+        left: -40%;
+    }
+
+    30% {
+        left: -10%;
+    }
+
+    60% {
+        left: 50%;
+    }
+
+    100% {
+        left: 50%;
+    }
+}
+
+.linkExample {
+    height: calc(var(--viewportValue) * 160);
+    width: calc(var(--viewportValue) * 525);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.linkExamplePicture {
+    height: 100%;
+    width: 100%;
+    border-radius: calc(var(--viewportValue) * 25);
+    border-style: solid;
+    border-width: calc(var(--viewportValue) * 15);
+    border-color: white;
+}
+
+.speedExample {
+    width: calc(var(--viewportValue) * 1000);
+    height: calc(var(--viewportValue) * 170);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: calc(var(--viewportValue) * 80);
+}
+
+.speedExamplePicture {
+    height: 100%;
+    width: 100%;
+    border-radius: calc(var(--viewportValue) * 80);
+}
+
+.kerdojelDiv {
+    height: fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.kerdojelKep {
+    height: calc(var(--viewportValue) * 250);
+    width: calc(var(--viewportValue) * 250);
+    background-color: white;
+    border-radius: 50%;
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(255, 255, 255));
+}
+
+.tutorialFinishButton {
+    margin-top: calc(var(--viewportValue) * 100);
+    background-color: rgb(20, 20, 20);
+    color: rgb(218, 218, 218);
+    height: calc(var(--viewportValue) * 280);
+    width: calc(var(--viewportValue) * 500);
+    border-radius: calc(var(--viewportValue) * 50);
+    border-style: solid;
+    border-width: calc(var(--viewportValue) * 25);
+    border-color: rgb(150, 150, 150);
+    font-size: calc(var(--viewportValue) * 80);
+    transition: border-color 250ms, background-color 250ms, color 250ms;
+}
+
+.tutorialFinishButton:hover {
+    border-color: white;
+    color: white;
+    background-color: rgb(30, 30, 30);
+}
+
+.tutorialFinishButton:active {
+    border-color: rgb(150, 150, 150);
+    color: rgb(218, 218, 218);
+    background-color: rgb(20, 20, 20);
+    transition: all 100ms !important;
+}
+
+.bolygok {
+    position: relative;
+    width: fit-content;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.nap {
+    position: absolute;
+    height: calc(var(--viewportValue) * 325);
+    width: calc(var(--viewportValue) * 325);
+    transform: translateX(-50%);
+    border-radius: 50%;
+    border-width: calc(var(--viewportValue) * 15);
+    border-style: solid;
+    border-color: transparent;
+
+    z-index: 21;
+
+    background-image: url("bolygok/sun2.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transition: border-color 500ms;
+}
+
+.napShadow {
+    box-shadow: 0px 0px calc(5000 * var(--viewportValue)) calc(800 * var(--viewportValue)) orange;
+    z-index: 1;
+}
+
+.nap:hover {
+    border-color: white;
+}
+
+.container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+}
+
+.container > * {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.merkur {
+    width: calc(var(--viewportValue) * 270);
+    height: calc(var(--viewportValue) * 80);
+    transform-origin: left;
+    animation-name: merkurSpinner;
+    animation-duration: calc(15 * var(--animationDelay));
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    z-index: 10;
+
+    transform: translateY(-50%) rotate(-90deg);
+}
+
+@keyframes merkurSpinner {
+    from {
+        transform: translateY(-50%) rotate(-90deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(270deg);
+    }
+}
+
+.merkurPlanet {
+    position: absolute;
+    height: calc(var(--viewportValue) * 80);
+    width: calc(var(--viewportValue) * 80);
+    border-radius: 50%;
+    
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url("bolygok/merkur.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(205,182,138));
+}
+
+.venus {
+    width: calc(var(--viewportValue) * 420);
+    height: calc(var(--viewportValue) * 100);
+    transform-origin: left;
+    animation-name: venusSpinner;
+    animation-duration: calc(215 * var(--animationDelay));
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    z-index: 9;
+
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+@keyframes venusSpinner {
+    from {
+        transform: translateY(-50%) rotate(-45deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(315deg);
+    }
+}
+
+.venusPlanet {
+    position: absolute;
+    height: calc(var(--viewportValue) * 100);
+    width: calc(var(--viewportValue) * 100);
+    border-radius: 50%;
+    
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url("bolygok/Venus2.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(255, 255, 255));
+}
+
+.fold {
+    width: calc(var(--viewportValue) * 580);
+    height: calc(var(--viewportValue) * 110);
+    transform-origin: left;
+    animation-name: foldSpinner;
+    animation-duration: calc(14.99 * var(--animationDelay));
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    z-index: 8;
+
+    transform: translateY(-50%) rotate(-225deg);
+}
+
+@keyframes foldSpinner {
+    from {
+        transform: translateY(-50%) rotate(-225deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(135deg);
+    }
+}
+
+.foldPlanet {
+    position: absolute;
+    height: calc(var(--viewportValue) * 110);
+    width: calc(var(--viewportValue) * 110);
+    border-radius: 50%;
+    
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url("bolygok/fold.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(120, 190, 255));
+}
+
+.mars {
+    width: calc(var(--viewportValue) * 725);
+    height: calc(var(--viewportValue) * 90);
+    transform-origin: left;
+    animation-name: marsSpinner;
+    animation-duration: calc(15.125 * var(--animationDelay));
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    z-index: 7;
+
+    transform: translateY(-50%) rotate(-200deg);
+}
+
+@keyframes marsSpinner {
+    from {
+        transform: translateY(-50%) rotate(-200deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(160deg);
+    }
+}
+
+.marsPlanet {
+    position: absolute;
+    height: calc(var(--viewportValue) * 90);
+    width: calc(var(--viewportValue) * 90);
+    border-radius: 50%;
+    
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url("bolygok/mars.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(212, 87, 52));
+}
+
+.jupiter {
+    width: calc(var(--viewportValue) * 920);
+    height: calc(var(--viewportValue) * 160);
+    transform-origin: left;
+    animation-name: jupiterSpinner;
+    animation-duration: calc(12.066 * var(--animationDelay));
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    z-index: 6;
+
+    transform: translateY(-50%) rotate(-35deg);
+}
+
+@keyframes jupiterSpinner {
+    from {
+        transform: translateY(-50%) rotate(-35deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(325deg);
+    }
+}
+
+.jupiterPlanet {
+    position: absolute;
+    height: calc(var(--viewportValue) * 160);
+    width: calc(var(--viewportValue) * 160);
+    border-radius: 50%;
+
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url("bolygok/jupiter.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(234,164,98));
+}
+
+.szaturnusz {
+    width: calc(var(--viewportValue) * 1150);
+    height: calc(var(--viewportValue) * 200);
+    transform-origin: left;
+    animation-name: szaturnuszSpinner;
+    animation-duration: calc(12.2 * var(--animationDelay));
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    z-index: 5;
+
+    transform: translateY(-50%) rotate(-15deg);
+}
+
+@keyframes szaturnuszSpinner {
+    from {
+        transform: translateY(-50%) rotate(-15deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(345deg);
+    }
+}
+
+.szaturnuszPlanet {
+    position: absolute;
+    height: calc(var(--viewportValue) * 200);
+    width: calc(var(--viewportValue) * 200);
+    border-radius: 50%;
+
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url("bolygok/saturnus.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(236,216,174));
+}
+
+.uranus {
+    width: calc(var(--viewportValue) * 1330);
+    height: calc(var(--viewportValue) * 150);
+    transform-origin: left;
+    animation-name: uranusSpinner;
+    animation-duration: calc(13.59 * var(--animationDelay));
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    z-index: 4;
+
+    transform: translateY(-50%) rotate(30deg);
+}
+
+@keyframes uranusSpinner {
+    from {
+        transform: translateY(-50%) rotate(30deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(390deg);
+    }
+}
+
+.uranusPlanet {
+    position: absolute;
+    height: calc(var(--viewportValue) * 150);
+    width: calc(var(--viewportValue) * 150);
+    border-radius: 50%;
+
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url("bolygok/uranus.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(106, 218, 233));
+}
+
+.neptunusz {
+    width: calc(var(--viewportValue) * 1550);
+    height: calc(var(--viewportValue) * 140);
+    transform-origin: left;
+    animation-name: neptunuszSpinner;
+    animation-duration: calc(13.333 * var(--animationDelay));
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    z-index: 3;
+
+    transform: translateY(-50%) rotate(-30deg);
+}
+
+@keyframes neptunuszSpinner {
+    from {
+        transform: translateY(-50%) rotate(-30deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(330deg);
+    }
+}
+
+.neptunuszPlanet {
+    position: absolute;
+    height: calc(var(--viewportValue) * 140);
+    width: calc(var(--viewportValue) * 140);
+    border-radius: 50%;
+
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url("bolygok/neptunusz.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(63, 92, 189));
+}
+
+.pluto {
+    width: calc(var(--viewportValue) * 1750);
+    height: calc(var(--viewportValue) * 135);
+    transform-origin: left;
+    animation-name: plutoSpinner;
+    animation-duration: calc(610 * var(--animationDelay));
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    z-index: 2;
+
+    transform: translateY(-50%) rotate(-135deg);
+}
+
+@keyframes plutoSpinner {
+    from {
+        transform: translateY(-50%) rotate(-135deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(225deg);
+    }
+}
+
+.plutoPlanet {
+    position: absolute;
+    height: calc(var(--viewportValue) * 130);
+    width: calc(var(--viewportValue) * 130);
+    border-radius: 50%;
+
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url("bolygok/pluto.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(202, 166, 134));
+}
+
+.korpalya {
+    position: absolute;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.korpalya::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    border-width: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) 0px 0px;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.korpalyaMerkur {
+    width: calc(550 * var(--viewportValue));
+    height: calc(550 * var(--viewportValue));
+}
+
+.korpalyaMerkur::after {
+    height: 98%;
+    width: 98%;
+    animation-name: merkurTrack;
+    animation-duration: calc(15 * var(--animationDelay));
+    transform: rotate(-45deg);
+}
+
+@keyframes merkurTrack {
+    from {
+        transform: rotate(-45deg);
+    }
+    to {
+        transform: rotate(315deg);
+    }
+}
+
+.korpalyaVenus {
+    width: calc(850 * var(--viewportValue));
+    height: calc(850 * var(--viewportValue));
+}
+
+.korpalyaVenus::after {
+    height: 99%;
+    width: 99%;
+    animation-name: venusTrack;
+    animation-duration: calc(215 * var(--animationDelay));
+    transform: rotate(0deg);
+}
+
+@keyframes venusTrack {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.korpalyaFold {
+    width: calc(1160 * var(--viewportValue));
+    height: calc(1160 * var(--viewportValue));
+}
+
+.korpalyaFold::after {
+    height: 100%;
+    width: 100%;
+    animation-name: foldTrack;
+    animation-duration: calc(14.99 * var(--animationDelay));
+    transform: rotate(-180deg);
+}
+
+@keyframes foldTrack {
+    from {
+        transform: rotate(-180deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+.korpalyaMars {
+    width: calc(1460 * var(--viewportValue));
+    height: calc(1460 * var(--viewportValue));  
+}
+
+.korpalyaMars::after {
+    height: 100%;
+    width: 100%;
+    animation-name: marsTrack;
+    animation-duration: calc(15.125 * var(--animationDelay));
+    transform: rotate(-155deg);
+}
+
+@keyframes marsTrack {
+    from {
+        transform: rotate(-155deg);
+    }
+    to {
+        transform: rotate(205deg);
+    }
+}
+
+.korpalyaJupiter {
+    width: calc(1850 * var(--viewportValue));
+    height: calc(1850 * var(--viewportValue));
+}
+
+.korpalyaJupiter::after {
+    height: 99%;
+    width: 99%;
+    animation-name: jupiterTrack;
+    animation-duration: calc(12.066 * var(--animationDelay));
+    transform: rotate(6deg);
+}
+
+@keyframes jupiterTrack {
+    from {
+        transform: rotate(6deg);
+    }
+    to {
+        transform: rotate(366deg);
+    }
+}
+
+.korpalyaSzaturnusz {
+    width: calc(2300 * var(--viewportValue));
+    height: calc(2300 * var(--viewportValue));
+}
+
+.korpalyaSzaturnusz::after {
+    height: 99%;
+    width: 99%;
+    animation-name: szaturnuszTrack;
+    animation-duration: calc(12.2 * var(--animationDelay));
+    transform: rotate(30deg);
+}
+
+@keyframes szaturnuszTrack {
+    from {
+        transform: rotate(30deg);
+    }
+    to {
+        transform: rotate(390deg);
+    }
+}
+
+.korpalyaUranusz {
+    width: calc(2675 * var(--viewportValue));
+    height: calc(2675 * var(--viewportValue));
+}
+
+.korpalyaUranusz::after {
+    height: 100%;
+    width: 100%;
+    animation-name: uranusTrack;
+    animation-duration: calc(13.59 * var(--animationDelay));
+    transform: rotate(75deg);
+}
+
+@keyframes uranusTrack {
+    from {
+        transform: rotate(75deg);
+    }
+    to {
+        transform: rotate(435deg);
+    }
+}
+
+.korpalyaNeptunusz {
+    width: calc(3100 * var(--viewportValue));
+    height: calc(3100 * var(--viewportValue));
+}
+
+.korpalyaNeptunusz::after {
+    height: 100%;
+    width: 100%;
+    animation-name: neptunuszTrack;
+    animation-duration: calc(13.333 * var(--animationDelay));
+    transform: rotate(15deg);
+}
+
+@keyframes neptunuszTrack {
+    from {
+        transform: rotate(15deg);
+    }
+    to {
+        transform: rotate(375deg);
+    }
+}
+
+.korpalyaPluto {
+    width: calc(3500 * var(--viewportValue));
+    height: calc(3500 * var(--viewportValue));
+}
+
+.korpalyaPluto::after {
+    height: 100%;
+    width: 100%;
+    animation-name: plutoTrack;
+    animation-duration: calc(610 * var(--animationDelay));
+    transform: rotate(-90deg);
+}
+
+@keyframes plutoTrack {
+    from {
+        transform: rotate(-90deg);
+    }
+    to {
+        transform: rotate(270deg);
+    }
+}
+
+.planet {
+    position: relative;
+    border-radius: 50%;
+    border-width: calc(var(--viewportValue) * 15);
+    border-color: transparent;
+    border-style: solid;
+
+    padding: calc(var(--viewportValue) * 20);
+
+    z-index: 3;
+
+    transition: border-color 500ms;
+}
+
+.planet:hover {
+    border-color: white;
+}
+
+.speedWrapper {
+    position: relative;
+    width: calc(var(--viewportValue) * 1050);
+    height: calc(var(--viewportValue) * 450);
+    padding-top: calc(var(--viewportValue) * 30);
+    margin-left: auto;
+    margin-right: calc(var(--viewportValue) * 30);
+}
+
+.speedContainer {
+    display: flex;
+    align-items: center;
+}
+
+.gombMinus, .gombPlus {
+    border-radius: calc(var(--viewportValue) * 60);
+    background-color: rgb(12, 34, 34);
+    border-color: rgb(0, 107, 107);
+    border-width: calc(var(--viewportValue) * 20);
+    color: rgb(210, 210, 210);
+    width: calc(var(--viewportValue) * 420);
+    height: calc(var(--viewportValue) * 180);
+    padding: calc(var(--viewportValue) * 20);
+    font-size: calc(var(--viewportValue) * 80);
+    transition: background-color 500ms, border-color 500ms, color 500ms;
+}
+
+.gombMinus:hover, .gombPlus:hover {
+    background-color: rgb(0, 107, 107);
+    border-color: rgb(0, 107, 107);
+    color: rgb(255, 255, 255);
+}
+
+.gombMinus:active, .gombPlus:active {
+    background-color: rgb(8, 22, 22);
+    border-color: rgb(0, 78, 78);
+    color: rgb(165, 165, 165);
+    transition: all 100ms !important;
+}
+
+.speed {
+    color: white;
+    font-size: calc(var(--viewportValue) * 90);
+    text-align: center;
+    margin-left: calc(var(--viewportValue) * 50);
+    margin-right: calc(var(--viewportValue) * 50);
+    width: calc(var(--viewportValue) * 175);
+    height: fit-content;
+}
+
+.questionMark {
+    width: calc(var(--viewportValue) * 200);
+    height: calc(var(--viewportValue) * 200);
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: calc(var(--viewportValue) * 20);
+    background-color: rgb(210, 210, 210);
+
+    background-image: url("bolygok/questionmark.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    filter: drop-shadow(0px 0px calc(var(--viewportValue) * 25) rgb(255, 255, 255));
+
+    transition: background-color 300ms;
+}
+
+.questionMark:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.questionMark:active {
+    background-color: rgb(146, 146, 146);
+    transition: all 100ms !important;
+}
+
+.infoAboutPlanet {
+    position: absolute;
+    width: calc(var(--viewportValue) * 1500);
+    height: calc(var(--viewportValue) * 2550);
+    left: 2.5%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-500%);
+    border-radius: calc(var(--viewportValue) * 90);
+    font-size: calc(var(--viewportValue) * 90);
+    z-index: 21;
+    transition: transform 500ms;
+}
+
+.infoAboutPlanetVisible {
+    transform: translateY(-50%) translateX(0);
+}
+
+.infoBox{
+    position: absolute;
+    width: calc(var(--viewportValue) * 1500);
+    height: calc(var(--viewportValue) * 2550);
+    padding: calc(var(--viewportValue) * 20);
+    border-width: calc(var(--viewportValue) * 20);
+    border-style: solid;
+    border-radius: calc(var(--viewportValue) * 90);
+    color: white;
+    transform: translateX(-500%);
+    transition: transform 500ms;
+}
+
+.activeInfo {
+    transform: translateX(0);
+}
+
+.closeX {
+    position: absolute;
+    height: calc(var(--viewportValue) * 175);
+    width: calc(var(--viewportValue) * 175);
+    border-radius: 50%;
+    border-style: solid;
+    border-width: calc(var(--viewportValue) * 20);
+    left: -4%;
+    top: -2%;
+    cursor: pointer;
+    z-index: 2;
+    transition: background-color 500ms;
+}
+
+.line1, .line2 {
+    position: absolute;
+    height: calc(var(--viewportValue) * 15);
+    width: calc(var(--viewportValue) * 80);
+    background-color: white;
+    top: 50%;
+    left: 50%;
+}
+
+.line1 {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.line2 {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.infoBox h1 {
+	color: rgb(255, 255, 255);
+	text-align: center;
+}
+
+.infoBox p {
+	color: white;
+	padding-left: calc(var(--viewportValue) * 20);
+    padding-right: calc(var(--viewportValue) * 20);
+    text-shadow: calc(var(--viewportValue) * 10) calc(var(--viewportValue) * 10) calc(var(--viewportValue) * 30) black;
+}
+
+.infoBox a {
+	font-weight: bold;
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 40) black !important;
+	transition: 500ms;
+}
+
+.infoBox a:active {
+	transition: all 0ms !important;
+}
+
+.napInfo {
+    background-image: linear-gradient(45deg, rgb(207, 190, 0),rgb(253, 232, 0), rgb(255,98,7));
+    border-color: rgb(255,98,7);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(255, 241, 91), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(255, 241, 91) inset;
+}
+
+.napInfo h1 {
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 25) rgb(48, 44, 0);
+}
+
+.napInfo a {
+    color: rgb(253, 232, 0);
+}
+
+.napInfo a:hover {
+    color: rgb(207, 190, 0);
+}
+
+.napInfo a:active {
+    color: rgb(170, 156, 0);
+}
+
+.closeXNap {
+    background-color: rgb(253, 232, 0);
+    border-color: rgb(255,98,7);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(210, 184, 150), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(210, 184, 150) inset;
+}
+
+.closeXNap:hover {
+    background-color: rgb(168, 154, 0);
+}
+
+.closeXNap:active {
+    background-color: rgb(104, 94, 7);
+    transition: all 0ms !important;
+}
+
+.merkurInfo {
+    background-image: linear-gradient(45deg, rgb(210, 184, 150), rgb(217, 131, 52), rgb(169, 84, 43));
+    border-color: rgb(169, 84, 43);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(210, 184, 150), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(210, 184, 150) inset;
+}
+
+.merkurInfo h1 {
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 25) rgb(49, 44, 36);
+}
+
+.merkurInfo a {
+    color: rgb(210, 184, 150);
+    
+}
+
+.merkurInfo a:hover {
+    color: rgb(160, 140, 114);
+}
+
+.merkurInfo a:active {
+    color: rgb(119, 105, 86);
+}
+
+.closeXMerkur {
+    background-color: rgb(217, 131, 52);
+    border-color: rgb(169, 84, 43);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(210, 184, 150), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(210, 184, 150) inset;
+}
+
+.closeXMerkur:hover {
+    background-color: rgb(169, 84, 43);
+}
+
+.closeXMerkur:active {
+    background-color: rgb(80, 42, 23);
+    transition: all 0ms !important;
+}
+
+.venuszInfo {
+    background-image: linear-gradient(45deg, rgb(218,204,176), rgb(193,203,200), rgb(89,106,115));
+    border-color: rgb(89,106,115);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(218,204,176), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(218,204,176) inset;
+}
+
+.venuszInfo h1 {
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 25) rgb(48, 45, 38);
+}
+
+.venuszInfo a {
+    color: rgb(193,203,200);
+}
+
+.venuszInfo a:hover {
+    color: rgb(159, 167, 165);
+}
+
+.venuszInfo a:active {
+    color: rgb(140, 146, 144);
+    transition: all 0ms !important;
+}
+
+.closeXVenusz {
+    background-color: rgb(193,203,200);
+    border-color: rgb(89,106,115);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(218,204,176), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(218,204,176) inset;
+}
+
+.closeXVenusz:hover {
+    background-color: rgb(89,106,115);
+}
+
+.closeXVenusz:active {
+    background-color: rgb(52, 61, 66); 
+    transition: all 0ms !important;
+}
+
+.foldInfo {
+    background-image: linear-gradient(45deg,rgb(0,185,207), rgb(0,128,158), rgb(0,53,83));
+    border-color: rgb(0,53,83);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(0,185,207), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(0,185,207) inset;
+}
+
+.closeXFold {
+    background-color: rgb(0,128,158);
+    border-color: rgb(0,53,83);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(0,185,207), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(0,185,207) inset;
+}
+
+.closeXFold:hover {
+    background-color: rgb(0, 34, 54);
+}
+
+.closeXFold:active {
+    background-color: rgb(0, 14, 22); 
+    transition: all 0ms !important;
+}
+
+.foldInfo h1 {
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 25) rgb(0, 48, 53);
+}
+
+.foldInfo a {
+    color: rgb(0,185,207);
+}
+
+.foldInfo a:hover {
+    color: rgb(0, 130, 145);
+}
+
+.foldInfo a:active {
+    color: rgb(0, 92, 102);
+    transition: all 0ms !important;
+}
+
+.marsInfo {
+    background-image: linear-gradient(45deg,rgb(209, 110, 73),rgb(180, 84, 55), rgb(184, 86, 51));
+    border-color: transparent;
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(209, 110, 73), 0px 0px calc(var(--viewportValue) * 150) calc(var(--viewportValue) * 10) rgb(209, 110, 73) inset;
+}
+
+.closeXMars {
+    background-color: rgb(213, 93, 57);
+    border-color: rgb(184, 86, 51);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(209, 110, 73), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(209, 110, 73) inset;
+}
+
+.closeXMars:hover {
+    background-color: rgb(139, 66, 40);
+}
+
+.closeXMars:active {
+    background-color: rgb(36, 18, 11);   
+    transition: all 0ms !important;
+}
+
+.marsInfo h1 {
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 25) rgb(48, 25, 17);
+}
+
+.marsInfo a {
+    color: rgb(209, 110, 73);
+}
+
+.marsInfo a:hover {
+    color: rgb(172, 90, 61);
+}
+
+.marsInfo a:active {
+    color: rgb(141, 75, 51);
+}
+
+.jupiterInfo {
+    background-image: linear-gradient(45deg,rgb(254, 169, 83),rgb(244, 110, 1), rgb(136, 26, 5));
+    border-color: rgb(137, 38, 3);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(244, 110, 1), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(244, 110, 1) inset;
+}
+
+.closeXJupiter {
+    background-color: rgb(244, 110, 1);
+    border-color: rgb(137, 38, 3);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(244, 110, 1), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(244, 110, 1) inset;
+}
+
+.closeXJupiter:hover {
+    background-color: rgb(137, 38, 3);
+}
+
+.closeXJupiter:active {
+    background-color: rgb(53, 16, 2);    
+    transition: all 0ms !important;
+}
+
+.jupiterInfo h1 {
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 25) rgb(48, 21, 0);
+}
+
+.jupiterInfo a {
+    color: rgb(254, 169, 83);
+}
+
+.jupiterInfo a:hover {
+    color: rgb(192, 127, 63);
+}
+
+.jupiterInfo a:active {
+    color: rgb(167, 111, 55);
+}
+
+.szaturnuszInfo {
+    background-image: linear-gradient(45deg,rgb(231, 217, 181),rgb(145, 136, 122), rgb(177, 164, 137));
+    border-color: rgb(78, 75, 68);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(145, 136, 122), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(145, 136, 122) inset;
+}
+
+.closeXSzaturnusz {
+    background-color: rgb(145, 136, 122);
+    border-color: rgb(78, 75, 68);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(145, 136, 122), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(145, 136, 122) inset;
+}
+
+.closeXSzaturnusz:hover {
+    background-color: rgb(78, 75, 68);
+}
+
+.closeXSzaturnusz:active {
+    background-color: rgb(34, 33, 31);
+    transition: all 0ms !important;
+}
+
+.szaturnuszInfo h1 {
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 25) rgb(48, 45, 41);
+}
+
+.szaturnuszInfo a {
+    color: rgb(231, 217, 181);
+}
+
+.szaturnuszInfo a:hover {
+    color: rgb(179, 168, 140);
+}
+
+.szaturnuszInfo a:active {
+    color: rgb(153, 144, 121);
+}
+
+.uranuszInfo {
+    background-image: linear-gradient(45deg,rgb(90, 209, 211), rgb(71, 182, 180), rgb(54, 140, 141));
+    border-color: rgb(54, 140, 141);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(90, 209, 211), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(90, 209, 211) inset;
+}
+
+.closeXUranusz {
+    background-color: rgb(90, 209, 211);
+    border-color: rgb(54, 140, 141);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(90, 209, 211), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(90, 209, 211) inset;
+}
+
+.closeXUranusz:hover {
+    background-color: rgb(54, 140, 141);
+}
+
+.closeXUranusz:active {
+    background-color: rgb(30, 74, 75);   
+    transition: all 0ms !important;
+}
+
+.uranuszInfo h1 {
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 25) rgb(48, 108, 109);
+}
+
+.uranuszInfo a {
+    color: rgb(90, 209, 211);
+}
+
+.uranuszInfo a:hover {
+    color: rgb(68, 150, 151);
+}
+
+.uranuszInfo a:active {
+    color: rgb(55, 118, 119);
+}
+
+.neptunuszInfo {
+    background-image: linear-gradient(45deg,rgb(70, 141, 245), rgb(11, 97, 197), rgb(0, 34, 139));
+    border-color: rgb(0, 34, 139);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(70, 141, 245), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(70, 141, 245) inset;
+}
+
+.closeXNeptunusz {
+    background-color: rgb(70, 141, 245);
+    border-color: rgb(0, 34, 139);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(70, 141, 245), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(70, 141, 245) inset;
+}
+
+.closeXNeptunusz:hover {
+    background-color: rgb(0, 34, 139);
+}
+
+.closeXNeptunusz:active {
+    background-color: rgb(0, 11, 43);
+    transition: all 0ms !important;
+}
+
+.neptunuszInfo h1 {
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 25) rgb(20, 42, 75);
+}
+
+.neptunuszInfo a {
+    color: rgb(70, 141, 245);
+}
+
+.neptunuszInfo a:hover {
+    color: rgb(50, 99, 172);
+}
+
+.neptunuszInfo a:active {
+    color: rgb(40, 79, 138);
+}
+
+.plutoInfo {
+    background-image: linear-gradient(45deg, rgb(188, 83, 0), rgb(113, 67, 42), rgb(68, 13, 2));
+    border-color: rgb(68, 13, 2);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(188, 83, 0), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(188, 83, 0) inset;
+}
+
+.plutoInfo h1 {
+    text-shadow: calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 15) calc(var(--viewportValue) * 25) rgb(48, 21, 0);
+}
+
+.closeXPluto {
+    background-color: rgb(188, 83, 0);
+    border-color: rgb(68, 13, 2);
+    box-shadow: 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(188, 83, 0), 0px 0px calc(var(--viewportValue) * 100) calc(var(--viewportValue) * 10) rgb(188, 83, 0) inset;
+}
+
+.closeXPluto:hover {
+    background-color: rgb(68, 13, 2);
+}
+
+.closeXPluto:active {
+    background-color: rgb(8, 1, 0);
+    transition: all 0ms !important;
+}
+
+.plutoInfo a {
+    color: rgb(188, 83, 0);
+}
+
+.plutoInfo a:hover {
+    color: rgb(134, 58, 0);
+}
+
+.plutoInfo a:active {
+    color: rgb(112, 49, 0);
+}
+
+.displayImage {
+    width: calc(var(--viewportValue) * 1400);
+}
+
+@media (max-width: 1200px) {
+    .infoAboutPlanet {
+        position: absolute;
+        width: calc(var(--viewportValue) * 1600);
+        height: calc(var(--viewportValue) * 2700);
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%) translateX(-500%);
+        border-radius: calc(var(--viewportValue) * 90);
+        font-size: calc(var(--viewportValue) * 90);
+        z-index: 21;
+        transition: transform 500ms;
+    }
+    
+    .displayImage {
+        width: calc(var(--viewportValue) * 1300);
+    }
+
+    .infoAboutPlanetVisible {
+        transform: translateY(-50%) translateX(-50%);
+    }
+
+    .infoBox{
+        position: absolute;
+        width: calc(var(--viewportValue) * 1600);
+        height: calc(var(--viewportValue) * 2700);
+        padding: calc(var(--viewportValue) * 20);
+        border-width: calc(var(--viewportValue) * 20);
+        border-style: solid;
+        border-radius: calc(var(--viewportValue) * 90);
+        color: white;
+        transform: translateX(-500%);
+        z-index: 21;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        transition: transform 500ms;
+    }
+    .activeInfo {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .tutorial h2 {
+        font-size: calc(var(--viewportValue) * 120);
+    }
+
+    .tutorialCard {
+        height: calc(var(--viewportValue) * 1500);
+        font-size: calc(var(--viewportValue) * 70);
+    }
+
+    .mobilTutorial {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        height: calc(var(--viewportValue) * 1200);
+        font-size: calc(var(--viewportValue) * 70);
+        width: calc(var(--viewportValue) * 1600);
+        margin-right: calc(var(--viewportValue) * 80);
+        margin-left: calc(var(--viewportValue) * 80);
+        padding: calc(var(--viewportValue) * 50);
+        border-radius: calc(var(--viewportValue) * 75);
+        border-width: calc(var(--viewportValue) * 25);
+        border-style: solid;
+        border-color: white;
+        background-color: rgb(20, 20, 20);
+        color: white;
+        
+
+        margin-left: auto;
+        margin-right: auto;
+
+        margin-top: calc(var(--viewportValue) * 160);
+    }
+
+    .tutorialContainer {
+        display: flex;
+        align-items: center;
+    }
+
+    .dropDownMenuClosedDiv {
+        height: calc(var(--viewportValue) * 150);
+        width: calc(var(--viewportValue) * 300);
+        margin-left: auto;
+        margin-right: auto;
+
+        border-style: solid;
+        border-width: calc(var(--viewportValue) * 15);
+        border-color: rgb(0,109,109);
+        border-radius: calc(var(--viewportValue) * 25);
+    }
+
+    .dropDownMenuClosedPng {
+        height: 100%;
+        width: 100%;
+    }
+
+    .dropDownMenuOpenDiv {
+        height: calc(var(--viewportValue) * 400);
+        width: calc(var(--viewportValue) * 800);
+        margin-left: auto;
+        margin-right: auto;
+
+        border-style: solid;
+        border-width: calc(var(--viewportValue) * 15);
+        border-color: rgb(0,109,109);
+        border-radius: calc(var(--viewportValue) * 25);
+    }
+    
+    .dropDownMenuOpenPng {
+        height: 100%;
+        width: 100%;
+    }
+
+    .dropDown {
+        background-image: url("bolygok/arrowDown.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: calc(var(--viewportValue) * 250);
+        width: calc(var(--viewportValue) * 400);
+        background-color: rgba(20, 20, 20, 0.25);
+        margin-top: calc(var(--viewportValue) * 75);
+        margin-left: auto;
+        margin-right: auto;
+
+        border-bottom-left-radius: 25%;
+        border-bottom-right-radius: 25%;
+
+        backdrop-filter: blur(calc(var(--viewportValue) * 40));
+        -webkit-backdrop-filter: blur(calc(var(--viewportValue) * 40));
+
+        border-width: calc(var(--viewportValue) * 20);
+        border-style: solid;
+        border-color: rgb(0,109,109);
+        border-top: none;
+
+        background-color: rgb(12, 34, 34);
+
+        transition: background-color 500ms;
+    }
+
+    .dropDown:hover {
+        cursor: pointer;
+        background-color:rgb(0,109,109);;
+    }
+
+    .speedWrapper {
+        position: relative;
+        width: calc(var(--viewportValue) * 1500);
+        height: calc(var(--viewportValue) * 600);
+        padding-top: calc(var(--viewportValue) * 30);
+        margin-left: auto;
+        margin-right: auto;
+
+        padding-left: calc(var(--viewportValue) * 20);
+        padding-right: calc(var(--viewportValue) * 20);
+
+        transform: translateY(calc(var(--viewportValue) * -600));
+
+        border-bottom-left-radius: calc(var(--viewportValue) * 160);
+        border-bottom-right-radius: calc(var(--viewportValue) * 160);
+
+        border-width: calc(var(--viewportValue) * 15);
+        border-style: solid;
+        border-color: rgb(0,109,109);
+        border-top: none;
+
+        backdrop-filter: blur(calc(var(--viewportValue) * 40));
+        -webkit-backdrop-filter: blur(calc(var(--viewportValue) * 40));
+
+        background-color: rgba(20, 20, 20, 0.25);
+
+        transition: transform 250ms ease-in-out;
+    }
+
+    .speedWrapperOpen {
+        border-bottom-left-radius: calc(var(--viewportValue) * 160);
+        border-bottom-right-radius: calc(var(--viewportValue) * 160);
+        transform: translateY(0);
+    }
+
+    .speedContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .gombMinus, .gombPlus {
+        width: calc(var(--viewportValue) * 500);
+        height: calc(var(--viewportValue) * 225);
+    }
+
+    .questionMark {
+        width: calc(var(--viewportValue) * 250);
+        height: calc(var(--viewportValue) * 250);
+    }
+
+    .dropDownOpen {
+        border-radius: 0%;
+        border-top-left-radius: 25%;
+        border-top-right-radius: 25%;
+        transform: rotate(180deg);
+
+        border-width: calc(var(--viewportValue) * 15);
+        border-style: solid;
+        border-color: rgb(0,109,109);
+        border-bottom: none;
+    }
+
+    .closeX {
+        position: absolute;
+        height: calc(var(--viewportValue) * 250);
+        width: calc(var(--viewportValue) * 250);
+        border-radius: 50%;
+        border-style: solid;
+        border-width: calc(var(--viewportValue) * 20);
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%,-40%);
+        cursor: pointer;
+        z-index: 2;
+        transition: background-color 500ms;
+    }
+
+    .infoAboutPlanet {
+        position: absolute;
+        width: calc(var(--viewportValue) * 1500);
+        height: calc(var(--viewportValue) * 2550);
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%) translateX(-500%);
+        border-radius: calc(var(--viewportValue) * 90);
+        font-size: calc(var(--viewportValue) * 90);
+        z-index: 21;
+        transition: transform 500ms;
+    }
+    
+    .infoAboutPlanetVisible {
+        transform: translateY(-50%) translateX(-50%);
+    }
+
+    .infoAboutPlanetDropBoxOpen {
+        transform: translateY(-45%) translateX(-50%);
+    }
+
+    .displayImage {
+        width: calc(var(--viewportValue) * 1100);
+    }
+}

@@ -33,4 +33,4 @@ A projekt jelenleg "Work in Progress" állapotban van, az alábbi kihívások me
 
 Mivel ez egy kliensoldali projekt, nincs szükség szerverre vagy telepítésre:
 1. Klónozd vagy töltsd le a tárolót.
-2. Nyisd meg az index.html fájlt a kedvenc böngésződben.
+2. Nyisd meg az "index.html" fájlt a kedvenc böngésződben.
